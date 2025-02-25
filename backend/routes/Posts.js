@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../models"); // Import the database instance
+const db = require("../models");
 
 router.get("/", async (req, res) => {
   const listOfPosts = await db.Posts.findAll();

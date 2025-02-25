@@ -13,8 +13,13 @@ function Post() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/comments", comment);
+      const res = await axios.post("http://localhost:3000/comments", comment, {
+        headers: {
+          accessToken: sessionStorage.getItem("accessToken"),
+        },
+      });
       console.log(res.data);
+
       setComments([...comments, res.data]);
       setComment({ commentBody: "", PostId: id });
     } catch (error) {
